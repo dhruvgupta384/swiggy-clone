@@ -1,0 +1,28 @@
+.header{
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid;
+  align-items: center;
+  padding: 0px 10px;
+}
+.nav-items>ul{
+  text-decoration: none;
+  list-style-type: none;
+  display: flex;
+
+}
+.nav-items>ul>li{
+  margin: 10px;
+}
+.logo{
+  display: flex;
+  margin: 10px;
+}
+.logo>img{
+  width:80px;
+  height:80px;
+  border-radius: 5px;
+}
+.App{
+  margin: 10px;
+}
