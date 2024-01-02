@@ -3,13 +3,51 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { createBrowserRouter } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
+import About from './Components/About';
+import { useRouteError } from 'react-router-dom';
+import AppLayout from './Components/AppLayout';
+import Contact from './Components/contact';
+import Resmenu from './Components/Resmenu';
+const ErrorElement=()=>{
+  const err=useRouteError();
+  return(
+    <>
+    <h1>This is an Error Page</h1>
+    <h2>{err.status}:{err.statusText}</h2>
+    </>
+  )
+}
+export const appRouter=createBrowserRouter([
+  { 
+    path:"/",
+    element:<AppLayout/>,
+    errorElement:<ErrorElement/>,
+    children:[
+      {
+        path:'/',
+        element:<App/>,
+        
+      },
+      {
+        path:'/about',
+        element:<About/>
+      },
+      {
+        path:'/contact',
+        element:<Contact/>
+      },
+      {
+        path:'restaurants/:resId',
+        element:<Resmenu/>
+      }
+    ]
+  }
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+root.render(<RouterProvider router={appRouter}/>);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
