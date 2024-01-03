@@ -6,9 +6,10 @@ function Cards({data}) {
     // console.log(cloudinaryImageId)
   return (
     <>
-    <div className='cardsWrapper'>
-    <img className='img' alt='Food-img' src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`}>
+    <div className='h-[350px] w-96  my-5 rounded-lg overflow-hidden border border solid border-black'>
+    <img className='h-52 w-full' alt='Food-img' src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`}>
     </img>
+    <div className='p-[10px]'>
     <h3>
             {name}
         </h3>
@@ -20,7 +21,7 @@ function Cards({data}) {
         </h5>
         <h5>
         Delivery Time:    {sla.deliveryTime} mins
-        </h5>
+        </h5></div>
     </div>
     </>
   )

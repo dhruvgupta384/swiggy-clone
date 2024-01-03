@@ -5,6 +5,7 @@ import Cards from './Components/Cards';
 import Header from './Components/Header'
 import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import useOnlinestatus from './utils/useOnlinestatus';
 function App() {
   const searchText = useRef();
   const [cardsData, setcardsData] = useState();
@@ -39,18 +40,25 @@ function App() {
     setresultData(ans)
     console.log(ans, searchText.current.value);
   }
+
+  const isOnline = useOnlinestatus();
+  if (!isOnline) {
+    return <h1>No Internet</h1>
+  }
+
+
   return (
     <div className="App">
       {/* <Header/> */}
-      <div style={{ display: 'flex', marginTop: "10px" }}>
-        <input ref={searchText} type='text'></input>
-        <button onClick={() => showsearchResult()}>Search Text</button>
+      <div className="flex">
+        <input className='p-1 border border-solid border-black rounded-lg' ref={searchText} type='text'></input>
+        <button className='border bg-yellow-300 rounded-lg text-zinc-950 px-5 mx-5 text-[20px]' onClick={() => showsearchResult()}>Search Text</button>
       </div>
-      <div className='cardsWrap'>
+      <div className='flex align-center justify-between flex-wrap'>
         {
           resultData?.map((val) => {
             return (
-          <Link to={/restaurants/+val.info.id}>  <Cards data={val} /></Link>  
+              <Link to={/restaurants/ + val.info.id}>  <Cards data={val} /></Link>
             )
           })
         }</div>

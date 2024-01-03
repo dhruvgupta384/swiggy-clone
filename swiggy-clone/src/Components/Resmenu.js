@@ -3,11 +3,14 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import { useState,useEffect } from 'react';
+import useOnlinestatus from '../utils/useOnlinestatus';
 function Resmenu() {
     // console.log(Params)
     let params=useParams();
     // console.log(params)
     const [menu, setmenu] = useState()
+
+    
     const callmenuapi=()=>{
         axios.get(`https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=30.4540701&lng=76.5818851&restaurantId=${params.resId}&catalog_qa=undefined&submitAction=ENTER`)
         .then((res)=>{
@@ -28,9 +31,9 @@ function Resmenu() {
 
   return (
     <div>
-        <h1>{name&&name} Menu Card</h1>
-        <p>{city},{areaName}</p>
-        <h2>
+        <h1 className='font-bold text-4xl my-4'>{name&&name} Menu Card</h1>
+        <p className='text-3xl my-5'>{city},{areaName}</p>
+        <h2 className='text-2xl my-4'>
             Menu Card
         </h2>
         {console.log(itemCards)}
