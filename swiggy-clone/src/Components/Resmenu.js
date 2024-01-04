@@ -10,7 +10,7 @@ function Resmenu() {
     let params=useParams();
     // console.log(params)
     const [menu, setmenu] = useState()
-    const [showitems, setshowitems] = useState()
+    const [showitems, setshowitems] = useState(-1)
     
     const callmenuapi=()=>{
         axios.get(`https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=30.4540701&lng=76.5818851&restaurantId=${params.resId}&catalog_qa=undefined&submitAction=ENTER`)
@@ -58,7 +58,7 @@ function Resmenu() {
                 categories?.map((val,indx)=>{
                     return(
                         <li key={indx}>
-                            <Categories indx={indx} showitems={indx==showitems?true:false} setshowitems={setshowitems} category={val.card.card}></Categories>
+                            <Categories indx={indx} showitems={showitems} setshowitems={setshowitems} category={val.card.card}></Categories>
                         </li>
                     )
                 })
