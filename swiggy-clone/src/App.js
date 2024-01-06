@@ -12,8 +12,9 @@ function App() {
   const [resultData, setresultData] = useState()
   const getapi = () => {
     axios.get('https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.4540701&lng=76.5818851&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING').then((res) => {
-      setresultData(res.data.data.cards?.[3].card.card.gridElements.infoWithStyle.restaurants)
-      setcardsData(res.data.data.cards?.[3].card.card.gridElements.infoWithStyle.restaurants)
+      // console.log(res.data.data.cards?.[4].card.card.gridElements?.infoWithStyle.restaurants)
+      setresultData(res.data.data.cards?.[4].card.card.gridElements?.infoWithStyle?.restaurants)
+      setcardsData(res.data.data.cards?.[4].card.card.gridElements?.infoWithStyle?.restaurants)
     })
   }
 

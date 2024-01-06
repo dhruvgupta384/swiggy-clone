@@ -16,8 +16,7 @@ function Resmenu() {
         axios.get(`https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=30.4540701&lng=76.5818851&restaurantId=${params.resId}&catalog_qa=undefined&submitAction=ENTER`)
         .then((res)=>{
             setmenu(res.data);
-            // console.log( res.data.data?.cards[2]?.groupedCard?.cardGroupMap.REGULAR.cards[3].card.card.itemCards)
-            
+            // console.log( res.data.data?.cards[2]?.groupedCard?.cardGroupMap.REGULAR.cards[3].card.card)
         })
     }
     useEffect(()=>{
@@ -27,7 +26,7 @@ function Resmenu() {
         return
     }
     const { name,city,areaName,costForTwoMessage }= menu?.data?.cards[0]?.card?.card?.info
-    const {itemCards} = menu.data?.cards[2]?.groupedCard?.cardGroupMap.REGULAR.cards[3].card.card
+    // const {itemCards} = menu.data?.cards[1]?.groupedCard?.cardGroupMap.REGULAR.cards[3].card.card
 //    let {name}= menu?.data?.cards[0]?.card?.card?.info
     let categories=menu?.data?.cards[2]?.groupedCard?.cardGroupMap.REGULAR.cards.filter((val)=>
         // console.log("ds",val.card.card)
@@ -43,7 +42,7 @@ function Resmenu() {
         {/* <h2 className='text-2xl my-4'>
             Menu Card
         </h2> */}
-        {console.log(itemCards)}
+        {/* {console.log(itemCards)} */}
         <ul>
             {/* {
                 itemCards?.map((val,indx)=>{
