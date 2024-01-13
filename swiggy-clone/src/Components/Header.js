@@ -1,7 +1,10 @@
 import React from "react"
 import { Link } from "react-router-dom"
 // import '../App.css'
+import { useSelector } from "react-redux"
 export default function Header(){
+  let obj=useSelector((state)=>state.items);
+  console.log(obj)
     return(
       <div className='flex w-94 border border-solid border-black justify-between items-center bg-green-200 shadow-xl'>
         <div className='w-20 m-2'>
@@ -20,7 +23,7 @@ export default function Header(){
         Contact Us
       </li></Link>
     <Link className='p-3' to='/contact'> <li>
-        Cart
+        Cart ({obj.length} Items)
       </li></Link>
      </ul>
     </div>
